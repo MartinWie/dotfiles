@@ -1,0 +1,78 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "share": "disabled",
+  "small_model": "github-copilot/gpt-5-mini",
+  "agent": {
+    "general": { "model": "github-copilot/gpt-5.2-codex" },
+    "explore": { "model": "github-copilot/gpt-5.2-codex" },
+    "compaction": { "model": "github-copilot/gpt-5.2-codex" }
+  },
+  "permission": {
+    "bash": {
+      "*": "ask",
+      "git *": "ask",
+      "git status *": "allow",
+      "git diff *": "allow",
+      "git log *": "allow",
+      "git pull *": "allow",
+      "git checkout *": "allow",
+      "rm *": "ask",
+      "ls *": "allow",
+      "mkdir *": "allow",
+      "wc *": "allow",
+      "find *": "allow",
+      "head *": "allow",
+      "yamllint *": "allow",
+      "echo *": "allow",
+      "diff *": "allow",
+      "grep *": "allow",
+      "sort *": "allow",
+      "awk *": "allow",
+      "xargs *": "allow",
+      "cp *": "allow",
+      "cat *": "allow",
+      "npx playwright test *": "allow", 
+      "tail *": "allow",
+      "./gradlew test *": "allow",
+      "rg *": "allow"
+    }
+  },
+  "plugin": [
+    "./Plugins/notification.js"
+  ],
+  "mcp": {
+    "serena": {
+      "type": "local",
+      "command": [
+        "uvx",
+        "--from",
+        "git+https://github.com/oraios/serena",
+        "serena",
+        "start-mcp-server",
+        "--context",
+        "ide-assistant"
+      ],
+      "enabled": true
+    },
+    "notionApi": {
+      "type": "local",
+      "command": [
+        "docker",
+        "run",
+        "--rm",
+        "-i",
+        "-e", "NOTION_TOKEN",
+        "mcp/notion"
+      ],
+      "environment": {
+        "NOTION_TOKEN": "{env:NOTION_TOKEN}"
+      },
+      "enabled": false
+    },
+    "chrome-devtools": {
+      "type": "local",
+      "command": ["npx", "-y", "chrome-devtools-mcp@latest"],
+      "enabled": false
+    }
+  }
+}

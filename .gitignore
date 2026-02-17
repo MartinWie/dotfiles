@@ -1,0 +1,6 @@
+.DS_Store
+*.bak
+.env.secrets
+node_modules/
+bun.lock
+.serena/

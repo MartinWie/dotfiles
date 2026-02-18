@@ -23,11 +23,10 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
-zinit light zsh-users/zsh-history-substring-search
 
-# Key bindings for history substring search
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+# Key bindings: up for fzf history search, Ctrl+R also works
+eval "$(fzf --zsh)"
+bindkey '^[[A' fzf-history-widget
 
 # Load completions (fast cached load, background rebuild for next shell)
 autoload -Uz compinit

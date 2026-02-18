@@ -29,8 +29,16 @@ zinit light zsh-users/zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# Load completions
-autoload -Uz compinit && compinit
+# Load completions (cached, revalidates every 24h)
+autoload -Uz compinit
+if [[ -z "$ZSH_COMPDUMP" ]]; then
+  ZSH_COMPDUMP="${ZDOTDIR:-$HOME}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
+fi
+if [[ "$ZSH_COMPDUMP"(#qNmh-24) ]]; then
+  compinit -C -d "$ZSH_COMPDUMP"
+else
+  compinit -d "$ZSH_COMPDUMP"
+fi
 zinit cdreplay -q
 
 # ── Powerlevel10k config ──────────────────────────────────────────
@@ -46,9 +54,14 @@ setopt HIST_SAVE_NO_DUPS
 setopt SHARE_HISTORY
 setopt APPEND_HISTORY
 
-# ── GPG ────────────────────────────────────────────────────────────
-export GPG_TTY=$(tty)
-gpgconf --launch gpg-agent
+# ── GPG (lazy-loaded on first command) ─────────────────────────────
+_gpg_init() {
+  export GPG_TTY=$(tty)
+  gpgconf --launch gpg-agent
+  add-zsh-hook -d preexec _gpg_init
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook preexec _gpg_init
 
 # ── Aliases ────────────────────────────────────────────────────────
 alias ls='ls --color=auto'
@@ -72,9 +85,13 @@ alias tp='bash testAndPush.sh'
 # ── Environment / PATH ────────────────────────────────────────────
 export JAVA_HOME=$HOME/Library/Java/JavaVirtualMachines/openjdk-21.0.2/Contents/Home
 
-# jenv
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
+# jenv (lazy-loaded)
+export PATH="$HOME/.jenv/shims:$HOME/.jenv/bin:$PATH"
+jenv() {
+  unfunction jenv
+  eval "$(command jenv init -)"
+  jenv "$@"
+}
 
 # opencode
 export PATH=$HOME/.opencode/bin:$PATH

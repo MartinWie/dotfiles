@@ -79,11 +79,9 @@ alias ip_inet="dig +short myip.opendns.com @resolver1.opendns.com"
 
 alias opencode_main='opencode ~/Documents/Dev/Git'
 
-alias merge='git fetch && git merge && currentBranch=$(git rev-parse --abbrev-ref HEAD) && git checkout master && git pull && git checkout $currentBranch && git merge master'
 alias tp='bash testAndPush.sh'
 
 # ── Environment / PATH ────────────────────────────────────────────
-export JAVA_HOME=$HOME/Library/Java/JavaVirtualMachines/openjdk-21.0.2/Contents/Home
 
 # jenv (lazy-loaded)
 export PATH="$HOME/.jenv/shims:$HOME/.jenv/bin:$PATH"

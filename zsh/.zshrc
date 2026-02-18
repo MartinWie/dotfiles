@@ -26,6 +26,7 @@ zinit light Aloxaf/fzf-tab
 
 # Key bindings: up for fzf history search, Ctrl+R also works
 export FZF_DEFAULT_OPTS='--layout=reverse'
+export FZF_CTRL_R_OPTS='--with-nth=2..'
 eval "$(fzf --zsh)"
 bindkey '^[[A' fzf-history-widget
 

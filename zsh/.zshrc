@@ -64,7 +64,7 @@ alias idea_dev='cd /Applications/  && pydo -q -e Dev open "IntelliJ\ IDEA\ CE.ap
 alias ip_local="ifconfig -a | grep \"inet \""
 alias ip_inet="dig +short myip.opendns.com @resolver1.opendns.com"
 
-alias opencode_main='cd ~/Documents/Dev/Git/ && opencode'
+alias opencode_main='opencode ~/Documents/Dev/Git'
 
 alias merge='git fetch && git merge && currentBranch=$(git rev-parse --abbrev-ref HEAD) && git checkout master && git pull && git checkout $currentBranch && git merge master'
 alias tp='bash testAndPush.sh'

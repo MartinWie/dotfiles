@@ -29,16 +29,16 @@ zinit light zsh-users/zsh-history-substring-search
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-# Load completions (cached, revalidates every 24h)
+# Load completions (fast cached load, background rebuild for next shell)
 autoload -Uz compinit
 if [[ -z "$ZSH_COMPDUMP" ]]; then
   ZSH_COMPDUMP="${ZDOTDIR:-$HOME}/.zcompdump-${SHORT_HOST}-${ZSH_VERSION}"
 fi
-if [[ "$ZSH_COMPDUMP"(#qNmh-24) ]]; then
-  compinit -C -d "$ZSH_COMPDUMP"
-else
+compinit -C -d "$ZSH_COMPDUMP"
+{
   compinit -d "$ZSH_COMPDUMP"
-fi
+  compdump
+} &!
 zinit cdreplay -q
 
 # ── Powerlevel10k config ──────────────────────────────────────────

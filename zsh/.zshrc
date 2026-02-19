@@ -24,11 +24,16 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
-# Key bindings: up for fzf history search, Ctrl+R also works
+# fzf setup
 export FZF_DEFAULT_OPTS='--layout=reverse'
 export FZF_CTRL_R_OPTS='--with-nth=2.. --no-info'
 eval "$(fzf --zsh)"
-bindkey '^[[A' fzf-history-widget
+
+# Key bindings: arrows for prefix history search, Shift+arrows for fzf
+bindkey '^[[A' up-line-or-search
+bindkey '^[[B' down-line-or-search
+bindkey '^[[1;2A' fzf-history-widget
+bindkey '^[[1;2B' fzf-history-widget
 
 # Load completions (fast cached load, background rebuild for next shell)
 autoload -Uz compinit

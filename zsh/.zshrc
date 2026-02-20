@@ -31,9 +31,19 @@ eval "$(fzf --zsh)"
 
 # Key bindings: arrows for prefix history search, Shift+arrows for fzf
 bindkey '^[[A' up-line-or-search
-bindkey '^[[B' down-line-or-search
 bindkey '^[[1;2A' fzf-history-widget
 bindkey '^[[1;2B' fzf-history-widget
+
+# Custom widget: go down in history if navigated up, otherwise open fzf
+down-line-or-fzf() {
+  if (( HISTNO < HISTCMD )); then
+    zle down-line-or-search
+  else
+    zle fzf-history-widget
+  fi
+}
+zle -N down-line-or-fzf
+bindkey '^[[B' down-line-or-fzf
 
 # Load completions (fast cached load, background rebuild for next shell)
 autoload -Uz compinit

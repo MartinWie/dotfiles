@@ -13,7 +13,7 @@ brew install --cask font-jetbrains-mono-nerd-font ghostty
 
 ## 3. Clone dotfiles
 ```bash
-git clone <your-repo-url> ~/Documents/Dev/Git/dotfiles
+git clone https://github.com/MartinWie/dotfiles.git ~/Documents/Dev/Git/dotfiles
 ```
 
 ## 4. Copy configs

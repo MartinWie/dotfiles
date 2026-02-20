@@ -29,10 +29,8 @@ export FZF_DEFAULT_OPTS='--layout=reverse'
 export FZF_CTRL_R_OPTS='--with-nth=2.. --no-info'
 eval "$(fzf --zsh)"
 
-# Key bindings: arrows for prefix history search, Shift+arrows for fzf
+# Key bindings: Up for prefix history search
 bindkey '^[[A' up-line-or-search
-bindkey '^[[1;2A' fzf-history-widget
-bindkey '^[[1;2B' fzf-history-widget
 
 # Custom widget: go down in history if navigated up, otherwise open fzf
 down-line-or-fzf() {

@@ -49,3 +49,5 @@ Provide feedback organized by priority:
 - Suggestions (consider improving)
 
 Include specific examples of how to fix issues.
+
+Now that we are done implementing this, is there anything we should clean up or refactor?

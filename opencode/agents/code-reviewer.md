@@ -50,4 +50,8 @@ Provide feedback organized by priority:
 
 Include specific examples of how to fix issues.
 
-Now that we are done implementing this, is there anything we should clean up or refactor?
+Now that we are done implementing this, is there anything we should clean up or refactor? 
+
+Think about this after a given code review.
+
+Ensure future maintainability and simplicity.

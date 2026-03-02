@@ -3,9 +3,9 @@
   "share": "disabled",
   "small_model": "github-copilot/gpt-5-mini",
   "agent": {
-    "general": { "model": "github-copilot/gpt-5.2-codex" },
-    "explore": { "model": "github-copilot/gpt-5.2-codex" },
-    "compaction": { "model": "github-copilot/gpt-5.2-codex" }
+    "general": { "model": "github-copilot/gpt-5.3-codex" },
+    "explore": { "model": "github-copilot/gpt-5.3-codex" },
+    "compaction": { "model": "github-copilot/gpt-5.3-codex" }
   },
   "permission": {
     "bash": {

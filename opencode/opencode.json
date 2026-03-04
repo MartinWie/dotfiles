@@ -18,6 +18,7 @@
       "git checkout *": "allow",
       "rm *": "ask",
       "ls *": "allow",
+      "pwd *": "allow",
       "mkdir *": "allow",
       "wc *": "allow",
       "find *": "allow",
@@ -32,13 +33,16 @@
       "cp *": "allow",
       "cat *": "allow",
       "npx playwright test *": "allow", 
+      "npx playwright *": "allow",
       "tail *": "allow",
       "./gradlew test *": "allow",
+      "wc *": "allow",
       "rg *": "allow"
     }
   },
   "plugin": [
-    "./Plugins/notification.js"
+    "./Plugins/notification.js",
+    "./plugins/awake.js"
   ],
   "mcp": {
     "serena": {

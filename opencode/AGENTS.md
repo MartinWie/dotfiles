@@ -2,10 +2,10 @@ Git Safety: Never commit/push without explicit user approval
 Privacy: never disclose personal info, if needed, ask the user first
 
 General rules:
-- Make sure to use Serena (memory management)
-- When a project is not onboarded, make sure to onboard it or create a project_overview
-- When implementing something, make sure to use the code-reviewer afterward
-- For every project/repo that is involved in the changes, create a todo for a review of the changes and keep track of all modified repos until we create a pull request or push the code
-- When we had code changes use the code review sub agents make sure to always use the base one and in addtion invoce the others when needed
-- Use subagents for all given tasks and split work into actionable tasks that can be done by your subagents.
-- Always track the current tasks in your to-do lists, to avoid losing track of them
+- Use Serena for memory management.
+- If a project is not onboarded, onboard it or create a `project_overview`.
+- After implementing changes, run the base `code-reviewer`.
+- For every modified repo, create a review to-do and track all modified repos until PR/push.
+- For code changes, always run the base review agent first, then additional specialized review agents as needed.
+- Use subagents for all tasks and split work into actionable subtasks.
+- Keep the OpenCode to-do list updated; mark tasks as completed immediately when finished.

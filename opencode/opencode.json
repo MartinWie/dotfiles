@@ -33,6 +33,7 @@
       "cp *": "allow",
       "cat *": "allow",
       "npx playwright test *": "allow", 
+      "CI=1 npx playwright test *": "allow",
       "npx playwright *": "allow",
       "tail *": "allow",
       "./gradlew test *": "allow",
